@@ -2,6 +2,7 @@
 USING_NS_CC;
 
 #include "./ctpWrapper/FACTPWrapper.h"
+#include "QuoteScene.h"
 
 using namespace cocostudio::timeline;
 
@@ -143,6 +144,11 @@ void LoginScene::OnEvent(IEvent*pEvent)
 								Text *pTxt = dynamic_cast<Text*>(m_csbNode->getChildByName("Text_CTP_STATUS_Value"));
 								pTxt->setString("ctp server connectded !");
 
+								//sceneÇÐ»»
+								//QuoteScene
+								auto quoteScene = QuoteScene::createScene();
+								Director::getInstance()->purgeCachedData();
+								Director::getInstance()->pushScene(quoteScene);
 	}
 		break;
 	case EVENT_CTP_DISCONNECTED:

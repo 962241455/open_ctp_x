@@ -45,6 +45,9 @@
     <ClCompile Include="..\Classes\ctpWrapper\FAFile.cpp">
       <Filter>src\ctpWrapper</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\QuoteScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -82,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\EventProduce\Events.h">
       <Filter>src\EventProduce</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\QuoteScene.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

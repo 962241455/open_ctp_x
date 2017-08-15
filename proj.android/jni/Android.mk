@@ -20,6 +20,7 @@ LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
                    ../../Classes/HelloWorldScene.cpp \
                    ../../Classes/LoginScene.cpp \
+                   ../../Classes/QuoteScene.cpp \
                    ../../Classes/ctpWrapper\FACfg.cpp \
                    ../../Classes/ctpWrapper\FACTPQuote.cpp \
 				   ../../Classes/ctpWrapper\FAFile.cpp \

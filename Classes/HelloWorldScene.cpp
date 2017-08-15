@@ -2,6 +2,7 @@
 #include "cocostudio/CocoStudio.h"
 #include "ui/CocosGUI.h"
 #include "LoginScene.h"
+#include "QuoteScene.h"
 
 USING_NS_CC;
 
@@ -102,5 +103,10 @@ void HelloWorld::myupdate4(float dt)
 	//Director::getInstance()->pushScene(TransitionFade::create(2, loginScene));
 	Director::getInstance()->purgeCachedData();
 	Director::getInstance()->pushScene(loginScene);
+
+
+	//auto quoteScene = QuoteScene::createScene();
+	//Director::getInstance()->purgeCachedData();
+	//Director::getInstance()->pushScene(quoteScene);
 
 }

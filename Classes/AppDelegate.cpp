@@ -1,6 +1,7 @@
 #include "AppDelegate.h"
 #include "HelloWorldScene.h"
 #include "LoginScene.h"
+#include "QuoteScene.h"
 
 USING_NS_CC;
 
@@ -43,8 +44,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     FileUtils::getInstance()->addSearchPath("res");
 
     // create a scene. it's an autorelease object
-    //auto scene = HelloWorld::createScene();
-	auto scene = LoginScene::createScene();
+    auto scene = HelloWorld::createScene();
+	//auto scene = LoginScene::createScene();
+	//auto scene = QuoteScene::createScene();
 
 	////LoginScene
 	//auto loginScene = LoginScene::createScene();
