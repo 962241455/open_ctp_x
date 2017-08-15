@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<Platform> 
+  <Server Quote="tcp://180.168.146.187:10011" Trade="tcp://180.168.146.187:10001" BrokerID="9999" AccountID="xxx" Password="xxx"/>
+  <Server Quote="tcp://180.168.146.187:10011" Trade="tcp://180.168.146.187:10001" BrokerID="9999" AccountID="xxx" Password="xxx"/>
+  
+</Platform>
