@@ -9,12 +9,13 @@
         <Image Name="btn_normal.png" />
         <Image Name="btn_press.png" />
         <File Name="CTPServer.xml" />
-        <Project Name="Frame.csd" Type="Layer" />
+        <Project Name="FrameCommon.csd" Type="Layer" />
         <Image Name="line.png" />
         <Project Name="LoginScene.csd" Type="Scene" />
         <Image Name="logo.png" />
         <Project Name="MainScene.csd" Type="Scene" />
         <Image Name="people.png" />
+        <Project Name="QuoteScene.csd" Type="Scene" />
         <Image Name="return_hover.png" />
         <Image Name="return_normal.png" />
         <Image Name="return_press.png" />
