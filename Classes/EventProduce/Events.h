@@ -1,5 +1,10 @@
 #pragma once
 
+#include "../ctp/ThostFtdcMdApi.h"
+#include "../ctp/ThostFtdcUserApiStruct.h"
+#include "../ctp/ThostFtdcTraderApi.h"
+#include "../ctp/ThostFtdcUserApiDataType.h"
+
 enum enmEvent
 {
 	EVENT_BEGIN = 0,
@@ -24,6 +29,9 @@ enum enmEvent
 	EVENT_CTP_EXIST,		//已经创建
 	EVENT_CTP_CONNECTED,
 	EVENT_CTP_DISCONNECTED,
+
+	EVENT_CTP_ERR,
+	EVENT_CTP_QUOTE_DATA,
 
 	EVENT_END,
 };
@@ -66,4 +74,28 @@ public:
 	}
 public:
 	char errCode[128];
+};
+
+
+class EventCTPErr:public IEvent
+{
+public:
+	EventCTPErr(enmEvent id)
+	{
+		m_id = id;
+		errCode[0] = 0;
+	}
+public:
+	char errCode[128];
+};
+
+class EventQuoteData :public IEvent
+{
+public:
+	EventQuoteData(enmEvent id)
+	{
+		m_id = id;
+		memset(&data, 0, sizeof(data));
+	}
+	CThostFtdcDepthMarketDataField data;
 };

@@ -32,6 +32,7 @@ private:
 	Button * m_pBtnExit;
 	Button * m_pBtnSub;
 	TextField * m_pTextFieldIns;
+	ListView * m_pListView;
 };
 
 #endif // __QuoteScene_SCENE_H__

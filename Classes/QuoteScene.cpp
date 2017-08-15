@@ -45,7 +45,9 @@ void QuoteScene::onEnterTransitionDidFinish()
 	m_pBtnSub = dynamic_cast<Button*>(m_csbNode->getChildByName("Button_Sub"));
 	m_pBtnSub->addTouchEventListener(this, toucheventselector(QuoteScene::Option));
 	m_pTextFieldIns = dynamic_cast<TextField*>(m_csbNode->getChildByName("TextField_Ins"));
-
+	//ListView_Quote
+	m_pListView = dynamic_cast<ListView*>(m_csbNode->getChildByName("ListView_Quote"));
+	//Init ListView
 
 	addChild(m_csbNode);
 
@@ -87,6 +89,17 @@ void QuoteScene::OnEvent(IEvent*pEvent)
 	switch (pEvent->m_id)
 	{
 		/* CTP */
+	case EVENT_CTP_QUOTE_DATA:
+	{
+		EventQuoteData* pSo = (EventQuoteData*)pEvent;
+		
+	}
+		break;
+	case EVENT_CTP_ERR:
+	{
+		EventCTPErr* pSo = (EventCTPErr*)pEvent;
+	}
+		break;
 	default:
 		break;
 	}
