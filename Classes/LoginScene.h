@@ -22,8 +22,13 @@ public:
 
 	void Option(Object* pSender,TouchEventType type);
 
+	virtual void onEnterTransitionDidFinish();
+
 public:
 	virtual void OnEvent(IEvent*pEvent);
+
+private:
+	void _Test();
 private:
 	Node *m_csbNode;
 };

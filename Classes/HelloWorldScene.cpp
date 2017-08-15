@@ -101,12 +101,13 @@ void HelloWorld::myupdate4(float dt)
 	//LoginScene
 	auto loginScene = LoginScene::createScene();
 	//Director::getInstance()->pushScene(TransitionFade::create(2, loginScene));
-	Director::getInstance()->purgeCachedData();
-	Director::getInstance()->pushScene(loginScene);
-
+	//Director::getInstance()->purgeCachedData();
+	//Director::getInstance()->pushScene(loginScene);
+	//removeFromParent();
+	Director::getInstance()->replaceScene(loginScene);
 
 	//auto quoteScene = QuoteScene::createScene();
-	//Director::getInstance()->purgeCachedData();
+	////Director::getInstance()->purgeCachedData();
 	//Director::getInstance()->pushScene(quoteScene);
 
 }

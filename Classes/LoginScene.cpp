@@ -31,28 +31,31 @@ bool LoginScene::init()
         return false;
     }
 	
+	return true;
+}
+
+void LoginScene::onEnterTransitionDidFinish()
+{
 	EVENT_PRODUCE->RegListen(this);
-    
+
 	m_csbNode = CSLoader::createNode("LoginScene.csb");
 
 	addChild(m_csbNode);
-	
+
 	Button * pBtnLogin = dynamic_cast<Button*>(m_csbNode->getChildByName("Button_Login"));
 	pBtnLogin->addTouchEventListener(this, toucheventselector(LoginScene::Option));
 
-	return true;
 }
 
 void LoginScene::Option(Object* pSender,TouchEventType type)
 {
-	//Text *pTxt = dynamic_cast<Text*>(m_csbNode->getChildByName("Text_CTP_STATUS_Value"));
-	//pTxt->setText("btn click!");
+	Text *pTxt = dynamic_cast<Text*>(m_csbNode->getChildByName("Text_CTP_STATUS_Value"));
 
 	switch (type)
 	{
 	case TOUCH_EVENT_ENDED:
-		//m_pTxtCTPStatusValue->setText("ctp ctp ctp ctp ctp ctp ctp ctp ctp !");
-		//pTxt->setText("ctp create ing...!");
+		//_Test();
+		pTxt->setText("wait for ctp connect...");
 		CTP_WRAP->CreateQuote();
 		CTP_WRAP->CreateTrade();
 		break;
@@ -60,6 +63,17 @@ void LoginScene::Option(Object* pSender,TouchEventType type)
 		break;
 	}
 
+}
+
+void LoginScene::_Test()
+{
+#if (CC_TARGET_PLATFORM == CC_PLATFORM_WIN32)
+#if defined(COCOS2D_DEBUG)
+	auto quoteScene = QuoteScene::createScene();
+	Director::getInstance()->replaceScene(quoteScene);
+
+#endif
+#endif
 }
 
 void LoginScene::OnEvent(IEvent*pEvent)
@@ -140,6 +154,7 @@ void LoginScene::OnEvent(IEvent*pEvent)
 		break;
 	case EVENT_CTP_CONNECTED:
 	{
+								//EVENT_PRODUCE->UnRegListen(this);
 								//connected
 								Text *pTxt = dynamic_cast<Text*>(m_csbNode->getChildByName("Text_CTP_STATUS_Value"));
 								pTxt->setString("ctp server connectded !");
@@ -147,8 +162,7 @@ void LoginScene::OnEvent(IEvent*pEvent)
 								//sceneÇÐ»»
 								//QuoteScene
 								auto quoteScene = QuoteScene::createScene();
-								Director::getInstance()->purgeCachedData();
-								Director::getInstance()->pushScene(quoteScene);
+								Director::getInstance()->replaceScene(quoteScene);
 	}
 		break;
 	case EVENT_CTP_DISCONNECTED:

@@ -6,6 +6,8 @@
 #include "../ctp/ThostFtdcTraderApi.h"
 #include "../ctp/ThostFtdcUserApiDataType.h"
 #include "single.h"
+#include <vector>
+using namespace std;
 
 USING_NS_CC;
 
@@ -44,7 +46,6 @@ enum enmServer
 	SVR_MAX,
 };
 
-
 class FACfg
 {
 public:
@@ -56,12 +57,22 @@ public:
 		char szAccount[CFG_STR_LEN];
 		char szPwd[CFG_STR_LEN];
 	};
+
+	struct tagIns
+	{
+		char szIns[CFG_STR_LEN];
+	};
+	
 public:
-	FACfg(){ memset(m_stSvrs, 0, sizeof(m_stSvrs)); }
+	FACfg(){ memset(m_stSvrs, 0, sizeof(m_stSvrs)); m_vIns.clear(); }
 	bool Load();
+	bool LoadIns();
 	tagServer * GetSvr(enmServer svr) { return &m_stSvrs[svr]; }
+	void GetIns(char *szIns[],int &nCount);
 private:
 	tagServer m_stSvrs[SVR_MAX];
+	vector<tagIns> m_vIns;
+
 };
 #define CTP_CFG singleton_t<FACfg>::instance()	
 
@@ -107,7 +118,7 @@ public:
 	virtual void OnRspError(CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
 
 	///订阅行情应答
-	virtual void OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
+	virtual void OnRspSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast);
 
 	///取消订阅行情应答
 	virtual void OnRspUnSubMarketData(CThostFtdcSpecificInstrumentField *pSpecificInstrument, CThostFtdcRspInfoField *pRspInfo, int nRequestID, bool bIsLast) {};
@@ -141,6 +152,9 @@ public:
 	void ReleaseQuote();
 
 	char * GetQuoteFront(enmServer svr);
+
+	void Sub(const char *szIns);
+	void Sub(char **szIns,int nCount);
 
 	/*
 	Trade

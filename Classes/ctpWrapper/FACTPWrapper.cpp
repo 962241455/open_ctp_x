@@ -39,6 +39,11 @@ void FACTPWrapper::CreateQuote()
 	{
 		return;
 	}
+
+	if (false == CTP_CFG->LoadIns())
+	{
+		return;
+	}
 	
 	if (m_pQuoteAPI)
 	{
@@ -75,10 +80,6 @@ void FACTPWrapper::CreateQuote()
 	}
 
 	m_pQuoteAPI = CreateFtdcMdApi(FA_QUOTE_FLOW_FOLDER, false, false);	//±ØÐë¿ÉÐ´Ä¿Â¼
-	{
-		IEvent * pEvent = new IEvent(EVENT_CFG_TEST_4);
-		EVENT_PRODUCE->FireEvent(pEvent);
-	}
 
 #else
 	IEvent * pEvent = new IEvent(EVENT_CFG_UNKNOW);
@@ -106,4 +107,23 @@ char * FACTPWrapper::GetQuoteFront(enmServer svr)
 	char * address = CTP_CFG->GetSvr(svr)->szQuote;
 	//FAFILE->Log(address);
 	return address;
+}
+
+void FACTPWrapper::Sub(const char *szIns)
+{
+	if (strlen(szIns) < 1)
+	{
+		return;
+	}
+
+	char *Ins[1];
+	Ins[0] = new char[33];
+	sprintf(Ins[0],"%s",szIns);
+	m_pQuoteAPI->SubscribeMarketData(Ins, 1);
+	SAFE_DEL(Ins[0]);
+}
+
+void FACTPWrapper::Sub(char **szIns, int nCount)
+{
+	m_pQuoteAPI->SubscribeMarketData(szIns, nCount);
 }
