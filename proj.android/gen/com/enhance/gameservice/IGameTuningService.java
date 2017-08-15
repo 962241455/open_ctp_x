@@ -1,6 +1,6 @@
 /*
  * This file is auto-generated.  DO NOT MODIFY.
- * Original file: E:\\YKIT\\FA_OPENCTP\\OPENCTP\\CrossPlatform\\FACrossQuote\\proj.android\\src\\com\\enhance\\gameservice\\IGameTuningService.aidl
+ * Original file: E:\\YKIT\\FA_OPENCTP\\open_ctp_x\\proj.android\\src\\com\\enhance\\gameservice\\IGameTuningService.aidl
  */
 package com.enhance.gameservice;
 public interface IGameTuningService extends android.os.IInterface
